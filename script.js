@@ -9,6 +9,11 @@ $("#submitBtn").on("click", function (event) {
  
   var value = $('#user-input').val();
   getWeather(value)
+  var uInput = $(this).parent().attr("id")
+  // Local Storage
+  localStorage.setItem(uInput, value)
+  
+  
 })
 function getWeather(value) {
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&units=imperial&appid=" + APIKey;
@@ -38,6 +43,7 @@ function getWeather(value) {
     .then(function(res){
       console.log(res)
     $(".uvIndex").append(res.value)
+
     })
 
   });
